@@ -42,7 +42,8 @@
   }
 
   &__text {
-    margin-bottom: $bpk-spacing-sm;
+    margin-bottom: $bpk-spacing-xl;
+    font-size: $bpk-font-size-base;
   }
 
   &__form {
@@ -55,17 +56,79 @@
   }
 
   &__input {
-    margin-bottom: $bpk-spacing-lg;
+    margin-bottom: $bpk-spacing-md;
     width: 100%;
     text-align: left;
   }
 
   &__calendar {
-    margin: $bpk-spacing-lg auto;
+    margin: 0 auto $bpk-spacing-xl auto;
     max-width: 800px;
 
     @include bpk-breakpoint-mobile {
-      margin: $bpk-spacing-md auto;
+      margin: 0 auto $bpk-spacing-lg auto;
     }
+
+    // Custom calendar styling
+    :global(.bpk-calendar) {
+      box-shadow: $bpk-box-shadow-sm;
+      border-radius: $bpk-border-radius-sm;
+    }
+
+    :global(.bpk-calendar-grid) {
+      background-color: $bpk-color-white;
+    }
+
+    :global(.bpk-calendar-date--selected) {
+      background-color: $bpk-color-sky-blue !important;
+    }
+  }
+
+  &__calendar-card {
+    max-width: 500px;
+    margin: 0 auto $bpk-spacing-xl auto;
+    padding: $bpk-spacing-lg;
+    
+    @include bpk-box-shadow-sm;
+    @include bpk-border-radius-sm;
+    
+    @include bpk-breakpoint-mobile {
+      padding: $bpk-spacing-md;
+    }
+  }
+
+  &__date-container {
+    margin-bottom: $bpk-spacing-md;
+  }
+
+  &__date-label {
+    display: block;
+    text-align: left;
+    margin-bottom: $bpk-spacing-sm;
+    font-weight: bold;
+    color: $bpk-color-sky-gray;
+  }
+
+  &__date-display {
+    margin: $bpk-spacing-md 0;
+    padding: $bpk-spacing-md;
+    background-color: $bpk-color-sky-blue-tint-03;
+    border-radius: $bpk-border-radius-sm;
+  }
+
+  &__selected-date {
+    font-weight: bold;
+    color: $bpk-color-sky-blue;
+  }
+
+  &__continue-btn {
+    margin-top: $bpk-spacing-lg;
+  }
+
+  // Button styling
+  button {
+    margin-top: $bpk-spacing-md;
+    padding: $bpk-spacing-sm $bpk-spacing-xl;
+    font-weight: bold;
   }
 }

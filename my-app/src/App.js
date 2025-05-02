@@ -3,6 +3,7 @@ import { BpkCode } from "@skyscanner/backpack-web/bpk-component-code";
 import BpkButton from "@skyscanner/backpack-web/bpk-component-button";
 import BpkText from "@skyscanner/backpack-web/bpk-component-text";
 import BpkInput from "@skyscanner/backpack-web/bpk-component-input";
+import BpkCard from "@skyscanner/backpack-web/bpk-component-card";
 
 import { cssModules } from "@skyscanner/backpack-web/bpk-react-utils";
 
@@ -73,23 +74,37 @@ const App = () => {
           Please select your departure date:
         </BpkText>
 
-        <div className={getClassName("App__form")}>
-          <BpkInput
-            id="dateInput"
-            type="date"
-            name="date"
-            value={inputValue}
-            onChange={handleDateChange}
-            className={getClassName("App__input")}
-          />
-        </div>
+        <BpkCard className={getClassName("App__calendar-card")}>
+          <div className={getClassName("App__date-container")}>
+            <BpkText
+              tagName="label"
+              htmlFor="dateInput"
+              className={getClassName("App__date-label")}
+            >
+              Select Date
+            </BpkText>
+            <BpkInput
+              id="dateInput"
+              type="date"
+              name="date"
+              value={inputValue}
+              onChange={handleDateChange}
+              className={getClassName("App__input")}
+            />
+          </div>
 
-        <BpkText tagName="p" className={getClassName("App__text")}>
-          Selected date: {displayValue}
-        </BpkText>
+          <div className={getClassName("App__date-display")}>
+            <BpkText tagName="p" className={getClassName("App__selected-date")}>
+              Selected date: {displayValue}
+            </BpkText>
+          </div>
+        </BpkCard>
 
-        <BpkButton onClick={() => alert(`Selected date: ${displayValue}`)}>
-          Confirm Date
+        <BpkButton
+          onClick={() => alert("It works!")}
+          className={getClassName("App__continue-btn")}
+        >
+          Continue
         </BpkButton>
       </main>
     </div>

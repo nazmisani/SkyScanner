@@ -6,7 +6,6 @@
     "@skyscanner/backpack-react-scripts": "11.2.2",
     "@skyscanner/backpack-web": "^37.2.1",
     "@skyscanner/cra-template-backpack": "0.0.9",
-    "bpk-component-calendar": "^13.1.2",
     "bpk-mixins": "^42.0.1",
     "bpk-stylesheets": "^9.0.17",
     "bpk-tokens": "^36.2.3",
@@ -40,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "bpk-component-calendar": "^13.1.2"
   }
 }
