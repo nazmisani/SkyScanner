@@ -4,9 +4,17 @@
   "private": true,
   "dependencies": {
     "@skyscanner/backpack-react-scripts": "11.2.2",
+    "@skyscanner/backpack-web": "^37.2.1",
     "@skyscanner/cra-template-backpack": "0.0.9",
+    "bpk-stylesheets": "^9.0.17",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "sass": "^1.87.0"
+  },
+  "backpack-react-scripts": {
+    "babelIncludePrefixes": [
+      "@skyscanner[\\\\/]backpack-web[\\\\/]bpk-"
+    ]
   },
   "scripts": {
     "start": "react-scripts start",
