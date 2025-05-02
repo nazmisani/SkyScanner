@@ -1,4 +1,6 @@
-@import '~bpk-mixins';
+// Import both tokens and mixins to access all variables like $bpk-spacing-lg
+@import "~bpk-tokens/tokens/base.default.scss";
+@import "~@skyscanner/backpack-web/bpk-mixins/index";
 
 @mixin container {
   max-width: $bpk-breakpoint-desktop;
@@ -41,5 +43,29 @@
 
   &__text {
     margin-bottom: $bpk-spacing-sm;
+  }
+
+  &__form {
+    margin: $bpk-spacing-lg auto;
+    max-width: 300px;
+
+    @include bpk-breakpoint-mobile {
+      margin: $bpk-spacing-md auto;
+    }
+  }
+
+  &__input {
+    margin-bottom: $bpk-spacing-lg;
+    width: 100%;
+    text-align: left;
+  }
+
+  &__calendar {
+    margin: $bpk-spacing-lg auto;
+    max-width: 800px;
+
+    @include bpk-breakpoint-mobile {
+      margin: $bpk-spacing-md auto;
+    }
   }
 }
