@@ -1,29 +1,46 @@
-✈️ Skyscanner Virtual Internship: Date Picker App
-This project is a part of the Virtual Work Experience Program by Skyscanner, where I was tasked with building a simple web application using Skyscanner's Backpack design system. The goal of this project is to simulate a real-world development scenario while practicing modern front-end tools and continuous integration techniques used by Skyscanner engineers.
+# ✈️ Skyscanner Virtual Internship: Date Picker App
 
-📌 Project Overview
-The application is a Date Reservation Page, designed to mimic a key functionality found in travel platforms like Skyscanner. The features include:
+This project is part of the **Virtual Work Experience Program by Skyscanner**, where I was challenged to build a simple web application using Skyscanner's open-source **Backpack** design system.  
+The goal is to simulate a real-world development experience while learning the tools, practices, and mindset used by Skyscanner engineers.
 
-A headline: “Tanggal Reservasi”
+---
 
-A calendar date picker
+## 📌 Project Overview
 
-A "Lanjutkan" button
+The app replicates a **Date Reservation Page**, a core feature found in many travel platforms.  
+It includes the following elements:
 
-🛠️ Tech Stack & Tools
-React – JavaScript library for building user interfaces
+- 🏷️ A headline: **"Tanggal Reservasi"**
+- 🗓️ A **calendar date picker**
+- 🔘 A **"Lanjutkan"** button
 
-Backpack – Skyscanner's open-source design system
+This app was built with a focus on clean UI, reusability, and maintainability.
 
-Jest & Testing Library – for writing and running automated tests
+---
 
-CI/CD concepts – applied through test integration and modular design
+## 🛠️ Tech Stack & Tools
 
-📚 What I Learned
-How to integrate a third-party design system (Backpack) into a React app
+- **React** – JavaScript library for building interactive UIs
+- **Backpack** – Skyscanner’s design system (components, styles, theming)
+- **Jest & Testing Library** – For writing and running automated unit tests
+- **CI/CD Concepts** – Integrated through modular and testable design
 
-Basics of component-based architecture and UI design
+---
 
-Writing automated tests to ensure functionality
+## 📚 What I Learned
 
-Following industry-level workflow and tools used by companies like Skyscanner
+- How to integrate a third-party design system (**Backpack**) into a React app
+- Understanding component-based architecture and reusable UI elements
+- Writing basic automated tests using Jest & React Testing Library
+- Emulating professional development workflow (setup, code, test)
+
+---
+
+### ✅ Status:
+
+**UnCompleted**  
+Final result: `App.js` file with integrated calendar and test coverage.
+
+---
+
+> 📝 _This project is a fictional internship task provided by Skyscanner for learning purposes only._
