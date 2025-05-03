@@ -9,9 +9,12 @@
 
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   &__header {
-    padding: $bpk-spacing-lg * 2;
+    padding: $bpk-spacing-lg * 1.5;
     background-color: $bpk-color-sky-blue;
     background-image: $bpk-primary-gradient;
     color: $bpk-color-white;
@@ -19,7 +22,7 @@
     @include bpk-box-shadow-sm;
 
     @include bpk-breakpoint-mobile {
-      padding: $bpk-spacing-xl;
+      padding: $bpk-spacing-lg;
     }
   }
 
@@ -27,22 +30,59 @@
     @include container;
   }
 
+  &__heading {
+    margin-bottom: $bpk-spacing-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__header-icon {
+    margin-right: $bpk-spacing-sm;
+  }
+
+  &__nav {
+    margin-top: $bpk-spacing-md;
+    margin-bottom: -$bpk-spacing-lg;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: $bpk-border-radius-sm;
+    padding: 0 $bpk-spacing-sm;
+  }
+
   &__main {
-    padding: $bpk-spacing-xxl;
+    padding: $bpk-spacing-xl;
+    flex: 1;
 
     @include container;
 
     @include bpk-breakpoint-mobile {
-      padding: $bpk-spacing-base;
+      padding: $bpk-spacing-lg $bpk-spacing-md;
     }
   }
 
-  &__heading {
-    margin-bottom: $bpk-spacing-sm;
+  &__destinations {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $bpk-spacing-lg;
+  }
+
+  &__destination {
+    padding: $bpk-spacing-md;
+  }
+
+  &__arrow-icon {
+    margin: 0 $bpk-spacing-md;
+    color: $bpk-color-sky-blue;
+    font-size: 1.5rem;
+  }
+
+  &__banner {
+    margin-bottom: $bpk-spacing-lg;
   }
 
   &__text {
-    margin-bottom: $bpk-spacing-xl;
+    margin-bottom: $bpk-spacing-lg;
     font-size: $bpk-font-size-base;
   }
 
@@ -56,9 +96,8 @@
   }
 
   &__input {
-    margin-bottom: $bpk-spacing-md;
     width: 100%;
-    text-align: left;
+    margin-bottom: $bpk-spacing-md;
   }
 
   &__calendar {
@@ -88,10 +127,10 @@
     max-width: 500px;
     margin: 0 auto $bpk-spacing-xl auto;
     padding: $bpk-spacing-lg;
-    
+
     @include bpk-box-shadow-sm;
     @include bpk-border-radius-sm;
-    
+
     @include bpk-breakpoint-mobile {
       padding: $bpk-spacing-md;
     }
@@ -107,6 +146,13 @@
     margin-bottom: $bpk-spacing-sm;
     font-weight: bold;
     color: $bpk-color-sky-gray;
+    display: flex;
+    align-items: center;
+  }
+
+  &__calendar-icon {
+    margin-right: $bpk-spacing-sm;
+    color: $bpk-color-sky-blue;
   }
 
   &__date-display {
@@ -121,8 +167,68 @@
     color: $bpk-color-sky-blue;
   }
 
+  &__flight-options {
+    max-width: 700px;
+    margin: 0 auto $bpk-spacing-lg auto;
+  }
+
+  &__section-title {
+    margin-bottom: $bpk-spacing-md;
+    color: $bpk-color-sky-gray;
+  }
+
+  &__flight-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $bpk-spacing-md;
+    margin-bottom: $bpk-spacing-md;
+
+    &:hover {
+      transform: translateY(-2px);
+      transition: transform 0.2s;
+      @include bpk-box-shadow-sm;
+    }
+  }
+
+  &__flight-details {
+    text-align: left;
+  }
+
+  &__flight-time {
+    font-weight: bold;
+    color: $bpk-color-sky-blue;
+    margin-bottom: $bpk-spacing-sm;
+  }
+
+  &__flight-duration {
+    color: $bpk-color-sky-gray;
+    font-size: $bpk-font-size-sm;
+    margin-top: $bpk-spacing-xs;
+  }
+
+  &__flight-price {
+    font-weight: bold;
+    font-size: $bpk-font-size-lg;
+    color: $bpk-color-monteverde;
+  }
+
   &__continue-btn {
     margin-top: $bpk-spacing-lg;
+    padding: $bpk-spacing-md $bpk-spacing-xl;
+    font-weight: bold;
+    min-width: 200px;
+  }
+
+  &__footer {
+    background-color: $bpk-color-sky-gray-tint-07;
+    padding: $bpk-spacing-md;
+    margin-top: $bpk-spacing-xl;
+  }
+
+  &__footer-text {
+    font-size: $bpk-font-size-sm;
+    color: $bpk-color-sky-gray;
   }
 
   // Button styling
