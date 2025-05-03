@@ -3,8 +3,10 @@
 @import "~@skyscanner/backpack-web/bpk-mixins/index";
 
 @mixin container {
-  max-width: $bpk-breakpoint-desktop;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
+  padding: 0 $bpk-spacing-lg;
 }
 
 .App {
@@ -12,229 +14,556 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: $bpk-color-sky-gray-tint-07;
+  position: relative;
+  overflow-x: hidden;
 
+  &__top-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 400px;
+    background-image: linear-gradient(
+      to bottom right,
+      $bpk-color-sky-blue,
+      $bpk-color-primary
+    );
+    z-index: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+  }
+
+  // Header styles
   &__header {
-    padding: $bpk-spacing-lg * 1.5;
-    background-color: $bpk-color-sky-blue;
-    background-image: $bpk-primary-gradient;
+    padding: $bpk-spacing-md 0;
     color: $bpk-color-white;
+    position: relative;
+    z-index: 1;
 
-    @include bpk-box-shadow-sm;
-
-    @include bpk-breakpoint-mobile {
-      padding: $bpk-spacing-lg;
+    @include bpk-breakpoint-tablet {
+      padding: $bpk-spacing-lg 0;
     }
   }
 
   &__header-inner {
     @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-icon {
+    margin-right: $bpk-spacing-xs;
+    color: $bpk-color-white;
   }
 
   &__heading {
-    margin-bottom: $bpk-spacing-md;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__header-icon {
-    margin-right: $bpk-spacing-sm;
+    margin-bottom: 0;
+    font-weight: bold;
+    color: $bpk-color-white;
   }
 
   &__nav {
-    margin-top: $bpk-spacing-md;
-    margin-bottom: -$bpk-spacing-lg;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: $bpk-border-radius-sm;
-    padding: 0 $bpk-spacing-sm;
-  }
-
-  &__main {
-    padding: $bpk-spacing-xl;
-    flex: 1;
-
-    @include container;
-
-    @include bpk-breakpoint-mobile {
-      padding: $bpk-spacing-lg $bpk-spacing-md;
+    background-color: transparent !important;
+    margin-bottom: 0;
+    
+    :global(.bpk-horizontal-nav__item) {
+      color: rgba(255, 255, 255, 0.8);
+      
+      &:hover {
+        color: $bpk-color-white;
+      }
+    }
+    
+    :global(.bpk-horizontal-nav__item--selected) {
+      color: $bpk-color-white;
     }
   }
 
-  &__destinations {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: $bpk-spacing-lg;
+  &__nav-icon {
+    margin-right: $bpk-spacing-xs;
   }
 
-  &__destination {
+  // Hero section
+  &__hero {
+    position: relative;
+    z-index: 1;
+    padding: $bpk-spacing-lg 0;
+    text-align: center;
+    margin-bottom: -110px;
+
+    @include bpk-breakpoint-tablet {
+      padding: $bpk-spacing-xl 0;
+      margin-bottom: -80px;
+    }
+  }
+
+  &__hero-content {
+    @include container;
+  }
+
+  &__hero-title {
+    color: $bpk-color-white;
+    margin-bottom: $bpk-spacing-sm;
+    font-weight: bold;
+  }
+
+  &__hero-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: $bpk-font-size-lg;
+  }
+
+  // Main content
+  &__main {
+    position: relative;
+    z-index: 1;
+    padding-bottom: $bpk-spacing-xl;
+    flex: 1;
+
+    @include bpk-breakpoint-mobile {
+      padding-bottom: $bpk-spacing-lg;
+    }
+  }
+
+  // Search panel
+  &__search-panel {
+    @include container;
+    background-color: $bpk-color-white;
+    border-radius: $bpk-border-radius-lg;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: $bpk-spacing-lg;
+    margin-bottom: $bpk-spacing-xl;
+
+    @include bpk-breakpoint-mobile {
+      padding: $bpk-spacing-md;
+      margin-bottom: $bpk-spacing-lg;
+    }
+  }
+
+  &__search-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: $bpk-spacing-lg;
+    gap: $bpk-spacing-md;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include bpk-breakpoint-mobile {
+      flex-direction: column;
+      margin-bottom: $bpk-spacing-md;
+    }
+  }
+
+  &__search-column {
+    flex: 1;
+    text-align: left;
+
+    @include bpk-breakpoint-mobile {
+      width: 100%;
+    }
+  }
+
+  &__search-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: $bpk-spacing-xs;
+
+    p {
+      margin: 0;
+      font-size: $bpk-font-size-sm;
+      color: $bpk-color-sky-gray;
+    }
+  }
+
+  &__search-icon {
+    margin-right: $bpk-spacing-xs;
+    color: $bpk-color-sky-blue;
+  }
+
+  &__location-card, &__date-card {
     padding: $bpk-spacing-md;
+    border-radius: $bpk-border-radius-sm;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      margin-bottom: $bpk-spacing-xs;
+      color: $bpk-color-sky-blue-shade-02;
+    }
+
+    p {
+      margin: 0;
+      color: $bpk-color-sky-gray;
+      font-size: $bpk-font-size-sm;
+    }
   }
 
   &__arrow-icon {
-    margin: 0 $bpk-spacing-md;
     color: $bpk-color-sky-blue;
-    font-size: 1.5rem;
-  }
-
-  &__banner {
-    margin-bottom: $bpk-spacing-lg;
-  }
-
-  &__text {
-    margin-bottom: $bpk-spacing-lg;
-    font-size: $bpk-font-size-base;
-  }
-
-  &__form {
-    margin: $bpk-spacing-lg auto;
-    max-width: 300px;
+    flex-shrink: 0;
 
     @include bpk-breakpoint-mobile {
-      margin: $bpk-spacing-md auto;
+      transform: rotate(90deg);
+      margin: $bpk-spacing-md 0;
     }
   }
 
   &__input {
     width: 100%;
-    margin-bottom: $bpk-spacing-md;
-  }
-
-  &__calendar {
-    margin: 0 auto $bpk-spacing-xl auto;
-    max-width: 800px;
-
-    @include bpk-breakpoint-mobile {
-      margin: 0 auto $bpk-spacing-lg auto;
-    }
-
-    // Custom calendar styling
-    :global(.bpk-calendar) {
-      box-shadow: $bpk-box-shadow-sm;
-      border-radius: $bpk-border-radius-sm;
-    }
-
-    :global(.bpk-calendar-grid) {
-      background-color: $bpk-color-white;
-    }
-
-    :global(.bpk-calendar-date--selected) {
-      background-color: $bpk-color-sky-blue !important;
-    }
-  }
-
-  &__calendar-card {
-    max-width: 500px;
-    margin: 0 auto $bpk-spacing-xl auto;
-    padding: $bpk-spacing-lg;
-
-    @include bpk-box-shadow-sm;
-    @include bpk-border-radius-sm;
-
-    @include bpk-breakpoint-mobile {
-      padding: $bpk-spacing-md;
-    }
-  }
-
-  &__date-container {
-    margin-bottom: $bpk-spacing-md;
-  }
-
-  &__date-label {
-    display: block;
-    text-align: left;
-    margin-bottom: $bpk-spacing-sm;
-    font-weight: bold;
-    color: $bpk-color-sky-gray;
-    display: flex;
-    align-items: center;
-  }
-
-  &__calendar-icon {
-    margin-right: $bpk-spacing-sm;
-    color: $bpk-color-sky-blue;
-  }
-
-  &__date-display {
-    margin: $bpk-spacing-md 0;
-    padding: $bpk-spacing-md;
-    background-color: $bpk-color-sky-blue-tint-03;
-    border-radius: $bpk-border-radius-sm;
-  }
-
-  &__selected-date {
-    font-weight: bold;
-    color: $bpk-color-sky-blue;
-  }
-
-  &__flight-options {
-    max-width: 700px;
-    margin: 0 auto $bpk-spacing-lg auto;
-  }
-
-  &__section-title {
-    margin-bottom: $bpk-spacing-md;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: $bpk-font-size-base;
     color: $bpk-color-sky-gray;
   }
 
-  &__flight-option {
+  &__search-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50% !important;
+    background-color: $bpk-color-sky-blue !important;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: $bpk-spacing-md;
-    margin-bottom: $bpk-spacing-md;
+    justify-content: center;
+    align-self: flex-end;
+    margin-bottom: 5px;
+    transition: transform 0.2s;
 
     &:hover {
       transform: translateY(-2px);
-      transition: transform 0.2s;
-      @include bpk-box-shadow-sm;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    @include bpk-breakpoint-mobile {
+      align-self: center;
+      margin-top: $bpk-spacing-md;
+      margin-bottom: 0;
     }
   }
 
-  &__flight-details {
-    text-align: left;
+  // Alert styles
+  &__banner {
+    @include container;
+    margin-bottom: $bpk-spacing-lg;
+  }
+
+  &__alert-content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__alert-icon {
+    margin-right: $bpk-spacing-sm;
+    color: $bpk-color-monteverde;
+  }
+
+  // Section styles
+  &__section {
+    @include container;
+    margin-bottom: $bpk-spacing-xl;
+
+    @include bpk-breakpoint-mobile {
+      margin-bottom: $bpk-spacing-lg;
+    }
+  }
+
+  &__section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $bpk-spacing-lg;
+    padding-bottom: $bpk-spacing-md;
+    border-bottom: 1px solid $bpk-color-sky-gray-tint-04;
+
+    @include bpk-breakpoint-mobile {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__section-title {
+    margin: 0;
+    color: $bpk-color-sky-gray;
+    font-weight: 600;
+  }
+
+  &__section-subtitle {
+    color: $bpk-color-monteverde;
+    margin: 0;
+    font-weight: 500;
+
+    @include bpk-breakpoint-mobile {
+      margin-top: $bpk-spacing-xs;
+    }
+  }
+
+  &__highlight {
+    color: $bpk-color-sky-blue;
+  }
+
+  // Flight grid
+  &__flight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: $bpk-spacing-lg;
+
+    @include bpk-breakpoint-mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__flight-card {
+    padding: $bpk-spacing-lg;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid $bpk-color-sky-gray-tint-04;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__flight-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $bpk-spacing-md;
+  }
+
+  &__airline {
+    font-weight: bold;
+    color: $bpk-color-sky-gray;
+    margin: 0;
+  }
+
+  &__verified-icon {
+    color: $bpk-color-monteverde;
+  }
+
+  &__flight-time-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $bpk-spacing-lg;
+  }
+
+  &__flight-time-column {
+    text-align: center;
   }
 
   &__flight-time {
-    font-weight: bold;
+    font-size: $bpk-font-size-xl;
+    margin-bottom: $bpk-spacing-xs;
     color: $bpk-color-sky-blue;
-    margin-bottom: $bpk-spacing-sm;
+  }
+
+  &__flight-code {
+    margin: 0;
+    color: $bpk-color-sky-gray;
+    font-size: $bpk-font-size-sm;
   }
 
   &__flight-duration {
-    color: $bpk-color-sky-gray;
+    flex: 1;
+    padding: 0 $bpk-spacing-sm;
+    position: relative;
+    text-align: center;
+
+    p {
+      margin: 0;
+      color: $bpk-color-sky-gray;
+      font-size: $bpk-font-size-sm;
+      padding-top: $bpk-spacing-xs;
+    }
+  }
+
+  &__duration-line {
+    height: 2px;
+    background-color: $bpk-color-sky-gray-tint-04;
+    position: relative;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: $bpk-color-sky-gray-tint-03;
+      top: -2px;
+    }
+
+    &:before {
+      left: 0;
+    }
+
+    &:after {
+      right: 0;
+    }
+  }
+
+  &__flight-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $bpk-spacing-md;
+    padding-bottom: $bpk-spacing-md;
+    border-bottom: 1px solid $bpk-color-sky-gray-tint-04;
+  }
+
+  &__direct-label {
+    display: inline-block;
+    padding: $bpk-spacing-xs $bpk-spacing-sm;
+    background-color: $bpk-color-sky-gray-tint-06;
+    border-radius: $bpk-border-radius-sm;
     font-size: $bpk-font-size-sm;
-    margin-top: $bpk-spacing-xs;
+    color: $bpk-color-sky-gray;
+    margin: 0;
   }
 
   &__flight-price {
     font-weight: bold;
+    color: $bpk-color-sky-blue;
     font-size: $bpk-font-size-lg;
-    color: $bpk-color-monteverde;
+    margin: 0;
   }
 
-  &__continue-btn {
-    margin-top: $bpk-spacing-lg;
-    padding: $bpk-spacing-md $bpk-spacing-xl;
+  &__flight-price--highlighted {
     font-weight: bold;
-    min-width: 200px;
+    color: $bpk-color-monteverde;
+    font-size: $bpk-font-size-lg;
+    margin: 0;
   }
 
-  &__footer {
-    background-color: $bpk-color-sky-gray-tint-07;
-    padding: $bpk-spacing-md;
+  &__select-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  &__select-button--highlighted {
+    width: 100%;
+    text-align: center;
+    background-color: $bpk-color-monteverde !important;
+  }
+
+  &__bottom-actions {
+    @include container;
+    text-align: center;
     margin-top: $bpk-spacing-xl;
   }
 
-  &__footer-text {
-    font-size: $bpk-font-size-sm;
-    color: $bpk-color-sky-gray;
+  &__continue-btn {
+    padding-left: $bpk-spacing-xl;
+    padding-right: $bpk-spacing-xl;
+    font-weight: bold;
   }
 
-  // Button styling
-  button {
-    margin-top: $bpk-spacing-md;
-    padding: $bpk-spacing-sm $bpk-spacing-xl;
+  // Footer
+  &__footer {
+    background-color: $bpk-color-sky-gray-tint-07;
+    padding-top: $bpk-spacing-xl;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__footer-content {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: $bpk-spacing-xl;
+
+    @include bpk-breakpoint-mobile {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  &__footer-brand {
+    display: flex;
+    align-items: center;
+
+    @include bpk-breakpoint-mobile {
+      justify-content: center;
+      margin-bottom: $bpk-spacing-lg;
+    }
+  }
+
+  &__footer-icon {
+    color: $bpk-color-sky-blue;
+    margin-right: $bpk-spacing-xs;
+  }
+
+  &__footer-brand-text {
     font-weight: bold;
+    color: $bpk-color-sky-blue;
+    margin: 0;
+  }
+
+  &__footer-links {
+    display: flex;
+    gap: $bpk-spacing-xl;
+
+    @include bpk-breakpoint-mobile {
+      flex-direction: column;
+      gap: $bpk-spacing-lg;
+    }
+  }
+
+  &__footer-column {
+    text-align: left;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+
+    @include bpk-breakpoint-mobile {
+      text-align: center;
+    }
+  }
+
+  &__footer-title {
+    color: $bpk-color-sky-gray;
+    margin-top: 0;
+    margin-bottom: $bpk-spacing-md;
+    font-weight: bold;
+  }
+
+  &__footer-link {
+    margin-bottom: $bpk-spacing-md;
+    color: $bpk-color-sky-gray;
+    text-decoration: none;
+    font-size: $bpk-font-size-sm;
+
+    &:hover {
+      color: $bpk-color-sky-blue;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__footer-bottom {
+    padding: $bpk-spacing-md 0;
+    border-top: 1px solid $bpk-color-sky-gray-tint-04;
+    text-align: center;
+  }
+
+  &__footer-text {
+    margin: 0;
+    color: $bpk-color-sky-gray;
+    font-size: $bpk-font-size-sm;
   }
 }

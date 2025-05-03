@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { BpkCode } from "@skyscanner/backpack-web/bpk-component-code";
 import BpkButton from "@skyscanner/backpack-web/bpk-component-button";
 import BpkText from "@skyscanner/backpack-web/bpk-component-text";
 import BpkInput from "@skyscanner/backpack-web/bpk-component-input";
@@ -12,6 +11,10 @@ import { withAlignment } from "@skyscanner/backpack-web/bpk-component-icon";
 import AirplaneIcon from "@skyscanner/backpack-web/bpk-component-icon/lg/flight";
 import CalendarIcon from "@skyscanner/backpack-web/bpk-component-icon/lg/calendar";
 import LongArrowRightIcon from "@skyscanner/backpack-web/bpk-component-icon/lg/long-arrow-right";
+import LocationIcon from "@skyscanner/backpack-web/bpk-component-icon/lg/navigation";
+import PriceAlertsIcon from "@skyscanner/backpack-web/bpk-component-icon/lg/alert--active";
+import SearchIcon from "@skyscanner/backpack-web/bpk-component-icon/lg/search";
+import TickIcon from "@skyscanner/backpack-web/bpk-component-icon/sm/tick-circle";
 
 import { cssModules } from "@skyscanner/backpack-web/bpk-react-utils";
 
@@ -21,6 +24,10 @@ const getClassName = cssModules(STYLES);
 const AlignedAirplaneIcon = withAlignment(AirplaneIcon);
 const AlignedCalendarIcon = withAlignment(CalendarIcon);
 const AlignedLongArrowRightIcon = withAlignment(LongArrowRightIcon);
+const AlignedLocationIcon = withAlignment(LocationIcon);
+const AlignedPriceAlertsIcon = withAlignment(PriceAlertsIcon);
+const AlignedSearchIcon = withAlignment(SearchIcon);
+const AlignedTickIcon = withAlignment(TickIcon);
 
 // Format date as YYYY-MM-DD for input type="date"
 const formatDateForInput = (date) => {
@@ -70,16 +77,20 @@ const App = () => {
 
   return (
     <div className={getClassName("App")}>
+      <div className={getClassName("App__top-gradient")} />
+      
       <header className={getClassName("App__header")}>
         <div className={getClassName("App__header-inner")}>
-          <BpkText
-            tagName="h1"
-            textStyle="xxl"
-            className={getClassName("App__heading")}
-          >
-            <AlignedAirplaneIcon className={getClassName("App__header-icon")} />{" "}
-            Flight Schedule
-          </BpkText>
+          <div className={getClassName("App__logo-container")}>
+            <AlignedAirplaneIcon className={getClassName("App__logo-icon")} />
+            <BpkText
+              tagName="h1"
+              textStyle="xl"
+              className={getClassName("App__heading")}
+            >
+              skyscanner
+            </BpkText>
+          </div>
 
           <BpkHorizontalNav className={getClassName("App__nav")}>
             <BpkHorizontalNavItem
@@ -87,7 +98,7 @@ const App = () => {
               selected={selected === "flights"}
               onClick={() => setSelected("flights")}
             >
-              Flights
+              <AlignedAirplaneIcon className={getClassName("App__nav-icon")} /> Flights
             </BpkHorizontalNavItem>
             <BpkHorizontalNavItem
               name="hotels"
@@ -106,126 +117,194 @@ const App = () => {
           </BpkHorizontalNav>
         </div>
       </header>
+
+      <div className={getClassName("App__hero")}>
+        <div className={getClassName("App__hero-content")}>
+          <BpkText tagName="h2" textStyle="xxl" className={getClassName("App__hero-title")}>
+            Find your next adventure
+          </BpkText>
+          <BpkText tagName="p" className={getClassName("App__hero-subtitle")}>
+            Compare flights, hotels, and car rentals
+          </BpkText>
+        </div>
+      </div>
+
       <main className={getClassName("App__main")}>
-        <div className={getClassName("App__destinations")}>
-          <div className={getClassName("App__destination")}>
-            <BpkText tagName="h2" textStyle="xl">
-              Jakarta (CGK)
-            </BpkText>
+        <div className={getClassName("App__search-panel")}>
+          <div className={getClassName("App__search-row")}>
+            <div className={getClassName("App__search-column")}>
+              <div className={getClassName("App__search-label")}>
+                <AlignedLocationIcon className={getClassName("App__search-icon")} />
+                <BpkText tagName="p">From</BpkText>
+              </div>
+              <BpkCard className={getClassName("App__location-card")}>
+                <BpkText tagName="h3" textStyle="lg">Jakarta (CGK)</BpkText>
+                <BpkText tagName="p">Soekarno-Hatta International</BpkText>
+              </BpkCard>
+            </div>
+            
+            <AlignedLongArrowRightIcon className={getClassName("App__arrow-icon")} />
+            
+            <div className={getClassName("App__search-column")}>
+              <div className={getClassName("App__search-label")}>
+                <AlignedLocationIcon className={getClassName("App__search-icon")} />
+                <BpkText tagName="p">To</BpkText>
+              </div>
+              <BpkCard className={getClassName("App__location-card")}>
+                <BpkText tagName="h3" textStyle="lg">Bali (DPS)</BpkText>
+                <BpkText tagName="p">Ngurah Rai International</BpkText>
+              </BpkCard>
+            </div>
           </div>
-          <AlignedLongArrowRightIcon
-            className={getClassName("App__arrow-icon")}
-          />
-          <div className={getClassName("App__destination")}>
-            <BpkText tagName="h2" textStyle="xl">
-              Bali (DPS)
-            </BpkText>
+
+          <div className={getClassName("App__search-row")}>
+            <div className={getClassName("App__search-column")}>
+              <div className={getClassName("App__search-label")}>
+                <AlignedCalendarIcon className={getClassName("App__search-icon")} />
+                <BpkText tagName="p">Departure date</BpkText>
+              </div>
+              <BpkCard className={getClassName("App__date-card")}>
+                <BpkInput
+                  id="dateInput"
+                  type="date"
+                  name="date"
+                  value={inputValue}
+                  onChange={handleDateChange}
+                  className={getClassName("App__input")}
+                />
+              </BpkCard>
+            </div>
+            
+            <div className={getClassName("App__search-column")}>
+              <BpkButton 
+                onClick={() => alert('It works!')} 
+                className={getClassName("App__search-button")}
+                iconOnly
+              >
+                <AlignedSearchIcon />
+              </BpkButton>
+            </div>
           </div>
         </div>
-
+        
         <BpkBannerAlert
-          message="Find the best prices for your flight with Skyscanner"
-          type="info"
+          message={
+            <div className={getClassName("App__alert-content")}>
+              <AlignedPriceAlertsIcon className={getClassName("App__alert-icon")} />
+              <span>Get price alerts! We'll notify you if the price changes.</span>
+            </div>
+          }
+          type="success"
           className={getClassName("App__banner")}
         />
 
-        <BpkText tagName="p" className={getClassName("App__text")}>
-          Please select your departure date:
-        </BpkText>
-
-        <BpkCard className={getClassName("App__calendar-card")}>
-          <div className={getClassName("App__date-container")}>
-            <BpkText
-              tagName="label"
-              htmlFor="dateInput"
-              className={getClassName("App__date-label")}
-            >
-              <AlignedCalendarIcon
-                className={getClassName("App__calendar-icon")}
-              />{" "}
-              Select Date
-            </BpkText>
-            <BpkInput
-              id="dateInput"
-              type="date"
-              name="date"
-              value={inputValue}
-              onChange={handleDateChange}
-              className={getClassName("App__input")}
-            />
-          </div>
-
-          <div className={getClassName("App__date-display")}>
-            <BpkText tagName="p" className={getClassName("App__selected-date")}>
-              Selected date: {displayValue}
-            </BpkText>
-          </div>
-        </BpkCard>
-
-        <div className={getClassName("App__flight-options")}>
-          <BpkText
-            tagName="h3"
-            textStyle="lg"
-            className={getClassName("App__section-title")}
-          >
-            Available Flight Options
+        <div className={getClassName("App__section")}>
+          <BpkText tagName="h3" textStyle="xl" className={getClassName("App__section-title")}>
+            Selected date: <span className={getClassName("App__highlight")}>{displayValue}</span>
           </BpkText>
-          <BpkCard className={getClassName("App__flight-option")}>
-            <div className={getClassName("App__flight-details")}>
-              <BpkText
-                tagName="h4"
-                textStyle="base"
-                className={getClassName("App__flight-time")}
-              >
-                07:30 - 10:05
-              </BpkText>
-              <BpkText tagName="p">Garuda Indonesia</BpkText>
-              <BpkText
-                tagName="p"
-                className={getClassName("App__flight-duration")}
-              >
-                2h 35m Direct
-              </BpkText>
-            </div>
-            <BpkText tagName="p" className={getClassName("App__flight-price")}>
-              IDR 1,850,000
-            </BpkText>
-          </BpkCard>
-          <BpkCard className={getClassName("App__flight-option")}>
-            <div className={getClassName("App__flight-details")}>
-              <BpkText
-                tagName="h4"
-                textStyle="base"
-                className={getClassName("App__flight-time")}
-              >
-                13:15 - 15:45
-              </BpkText>
-              <BpkText tagName="p">Lion Air</BpkText>
-              <BpkText
-                tagName="p"
-                className={getClassName("App__flight-duration")}
-              >
-                2h 30m Direct
-              </BpkText>
-            </div>
-            <BpkText tagName="p" className={getClassName("App__flight-price")}>
-              IDR 1,200,000
-            </BpkText>
-          </BpkCard>
         </div>
-
-        <BpkButton
-          onClick={() => alert("It works!")}
-          className={getClassName("App__continue-btn")}
-        >
-          Continue
-        </BpkButton>
+        
+        <div className={getClassName("App__section")}>
+          <div className={getClassName("App__section-header")}>
+            <BpkText tagName="h3" textStyle="xl" className={getClassName("App__section-title")}>
+              Available Flight Options
+            </BpkText>
+            <BpkText tagName="p" className={getClassName("App__section-subtitle")}>
+              Best price guarantee
+            </BpkText>
+          </div>
+          
+          <div className={getClassName("App__flight-grid")}>
+            <BpkCard className={getClassName("App__flight-card")}>
+              <div className={getClassName("App__flight-header")}>
+                <BpkText tagName="p" className={getClassName("App__airline")}>Garuda Indonesia</BpkText>
+                <AlignedTickIcon className={getClassName("App__verified-icon")} />
+              </div>
+              <div className={getClassName("App__flight-time-container")}>
+                <div className={getClassName("App__flight-time-column")}>
+                  <BpkText tagName="h4" textStyle="xl" className={getClassName("App__flight-time")}>07:30</BpkText>
+                  <BpkText tagName="p" className={getClassName("App__flight-code")}>CGK</BpkText>
+                </div>
+                <div className={getClassName("App__flight-duration")}>
+                  <div className={getClassName("App__duration-line")}></div>
+                  <BpkText tagName="p">2h 35m</BpkText>
+                </div>
+                <div className={getClassName("App__flight-time-column")}>
+                  <BpkText tagName="h4" textStyle="xl" className={getClassName("App__flight-time")}>10:05</BpkText>
+                  <BpkText tagName="p" className={getClassName("App__flight-code")}>DPS</BpkText>
+                </div>
+              </div>
+              <div className={getClassName("App__flight-footer")}>
+                <BpkText tagName="p" className={getClassName("App__direct-label")}>Direct</BpkText>
+                <BpkText tagName="p" className={getClassName("App__flight-price")}>IDR 1,850,000</BpkText>
+              </div>
+              <BpkButton className={getClassName("App__select-button")}>Select</BpkButton>
+            </BpkCard>
+            
+            <BpkCard className={getClassName("App__flight-card")}>
+              <div className={getClassName("App__flight-header")}>
+                <BpkText tagName="p" className={getClassName("App__airline")}>Lion Air</BpkText>
+              </div>
+              <div className={getClassName("App__flight-time-container")}>
+                <div className={getClassName("App__flight-time-column")}>
+                  <BpkText tagName="h4" textStyle="xl" className={getClassName("App__flight-time")}>13:15</BpkText>
+                  <BpkText tagName="p" className={getClassName("App__flight-code")}>CGK</BpkText>
+                </div>
+                <div className={getClassName("App__flight-duration")}>
+                  <div className={getClassName("App__duration-line")}></div>
+                  <BpkText tagName="p">2h 30m</BpkText>
+                </div>
+                <div className={getClassName("App__flight-time-column")}>
+                  <BpkText tagName="h4" textStyle="xl" className={getClassName("App__flight-time")}>15:45</BpkText>
+                  <BpkText tagName="p" className={getClassName("App__flight-code")}>DPS</BpkText>
+                </div>
+              </div>
+              <div className={getClassName("App__flight-footer")}>
+                <BpkText tagName="p" className={getClassName("App__direct-label")}>Direct</BpkText>
+                <BpkText tagName="p" className={getClassName("App__flight-price--highlighted")}>IDR 1,200,000</BpkText>
+              </div>
+              <BpkButton className={getClassName("App__select-button--highlighted")}>
+                Select
+              </BpkButton>
+            </BpkCard>
+          </div>
+        </div>
+        
+        <div className={getClassName("App__bottom-actions")}>
+          <BpkButton onClick={() => alert('It works!')} className={getClassName("App__continue-btn")}>
+            Continue
+          </BpkButton>
+        </div>
       </main>
 
       <footer className={getClassName("App__footer")}>
-        <BpkText tagName="p" className={getClassName("App__footer-text")}>
-          © 2025 Skyscanner Ltd
-        </BpkText>
+        <div className={getClassName("App__footer-content")}>
+          <div className={getClassName("App__footer-brand")}>
+            <AlignedAirplaneIcon className={getClassName("App__footer-icon")} />
+            <BpkText tagName="p" className={getClassName("App__footer-brand-text")}>
+              skyscanner
+            </BpkText>
+          </div>
+          <div className={getClassName("App__footer-links")}>
+            <div className={getClassName("App__footer-column")}>
+              <BpkText tagName="h4" className={getClassName("App__footer-title")}>Company</BpkText>
+              <a href="#" className={getClassName("App__footer-link")}>About us</a>
+              <a href="#" className={getClassName("App__footer-link")}>Careers</a>
+              <a href="#" className={getClassName("App__footer-link")}>Press</a>
+            </div>
+            <div className={getClassName("App__footer-column")}>
+              <BpkText tagName="h4" className={getClassName("App__footer-title")}>Help</BpkText>
+              <a href="#" className={getClassName("App__footer-link")}>FAQ</a>
+              <a href="#" className={getClassName("App__footer-link")}>Contact</a>
+              <a href="#" className={getClassName("App__footer-link")}>Privacy</a>
+            </div>
+          </div>
+        </div>
+        <div className={getClassName("App__footer-bottom")}>
+          <BpkText tagName="p" className={getClassName("App__footer-text")}>
+            © 2025 Skyscanner Ltd
+          </BpkText>
+        </div>
       </footer>
     </div>
   );
