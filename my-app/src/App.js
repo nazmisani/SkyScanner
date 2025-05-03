@@ -78,7 +78,7 @@ const App = () => {
   return (
     <div className={getClassName("App")}>
       <div className={getClassName("App__top-gradient")} />
-      
+
       <header className={getClassName("App__header")}>
         <div className={getClassName("App__header-inner")}>
           <div className={getClassName("App__logo-container")}>
@@ -98,7 +98,8 @@ const App = () => {
               selected={selected === "flights"}
               onClick={() => setSelected("flights")}
             >
-              <AlignedAirplaneIcon className={getClassName("App__nav-icon")} /> Flights
+              <AlignedAirplaneIcon className={getClassName("App__nav-icon")} />{" "}
+              Flights
             </BpkHorizontalNavItem>
             <BpkHorizontalNavItem
               name="hotels"
@@ -120,7 +121,11 @@ const App = () => {
 
       <div className={getClassName("App__hero")}>
         <div className={getClassName("App__hero-content")}>
-          <BpkText tagName="h2" textStyle="xxl" className={getClassName("App__hero-title")}>
+          <BpkText
+            tagName="h2"
+            textStyle="xxl"
+            className={getClassName("App__hero-title")}
+          >
             Find your next adventure
           </BpkText>
           <BpkText tagName="p" className={getClassName("App__hero-subtitle")}>
@@ -134,24 +139,34 @@ const App = () => {
           <div className={getClassName("App__search-row")}>
             <div className={getClassName("App__search-column")}>
               <div className={getClassName("App__search-label")}>
-                <AlignedLocationIcon className={getClassName("App__search-icon")} />
+                <AlignedLocationIcon
+                  className={getClassName("App__search-icon")}
+                />
                 <BpkText tagName="p">From</BpkText>
               </div>
               <BpkCard className={getClassName("App__location-card")}>
-                <BpkText tagName="h3" textStyle="lg">Jakarta (CGK)</BpkText>
+                <BpkText tagName="h3" textStyle="lg">
+                  Jakarta (CGK)
+                </BpkText>
                 <BpkText tagName="p">Soekarno-Hatta International</BpkText>
               </BpkCard>
             </div>
-            
-            <AlignedLongArrowRightIcon className={getClassName("App__arrow-icon")} />
-            
+
+            <AlignedLongArrowRightIcon
+              className={getClassName("App__arrow-icon")}
+            />
+
             <div className={getClassName("App__search-column")}>
               <div className={getClassName("App__search-label")}>
-                <AlignedLocationIcon className={getClassName("App__search-icon")} />
+                <AlignedLocationIcon
+                  className={getClassName("App__search-icon")}
+                />
                 <BpkText tagName="p">To</BpkText>
               </div>
               <BpkCard className={getClassName("App__location-card")}>
-                <BpkText tagName="h3" textStyle="lg">Bali (DPS)</BpkText>
+                <BpkText tagName="h3" textStyle="lg">
+                  Bali (DPS)
+                </BpkText>
                 <BpkText tagName="p">Ngurah Rai International</BpkText>
               </BpkCard>
             </div>
@@ -160,7 +175,9 @@ const App = () => {
           <div className={getClassName("App__search-row")}>
             <div className={getClassName("App__search-column")}>
               <div className={getClassName("App__search-label")}>
-                <AlignedCalendarIcon className={getClassName("App__search-icon")} />
+                <AlignedCalendarIcon
+                  className={getClassName("App__search-icon")}
+                />
                 <BpkText tagName="p">Departure date</BpkText>
               </div>
               <BpkCard className={getClassName("App__date-card")}>
@@ -174,10 +191,10 @@ const App = () => {
                 />
               </BpkCard>
             </div>
-            
+
             <div className={getClassName("App__search-column")}>
-              <BpkButton 
-                onClick={() => alert('It works!')} 
+              <BpkButton
+                onClick={() => alert("It works!")}
                 className={getClassName("App__search-button")}
                 iconOnly
               >
@@ -186,12 +203,16 @@ const App = () => {
             </div>
           </div>
         </div>
-        
+
         <BpkBannerAlert
           message={
             <div className={getClassName("App__alert-content")}>
-              <AlignedPriceAlertsIcon className={getClassName("App__alert-icon")} />
-              <span>Get price alerts! We'll notify you if the price changes.</span>
+              <AlignedPriceAlertsIcon
+                className={getClassName("App__alert-icon")}
+              />
+              <span>
+                Get price alerts! We'll notify you if the price changes.
+              </span>
             </div>
           }
           type="success"
@@ -199,79 +220,170 @@ const App = () => {
         />
 
         <div className={getClassName("App__section")}>
-          <BpkText tagName="h3" textStyle="xl" className={getClassName("App__section-title")}>
-            Selected date: <span className={getClassName("App__highlight")}>{displayValue}</span>
+          <BpkText
+            tagName="h3"
+            textStyle="xl"
+            className={getClassName("App__section-title")}
+          >
+            Selected date:{" "}
+            <span className={getClassName("App__highlight")}>
+              {displayValue}
+            </span>
           </BpkText>
         </div>
-        
+
         <div className={getClassName("App__section")}>
           <div className={getClassName("App__section-header")}>
-            <BpkText tagName="h3" textStyle="xl" className={getClassName("App__section-title")}>
+            <BpkText
+              tagName="h3"
+              textStyle="xl"
+              className={getClassName("App__section-title")}
+            >
               Available Flight Options
             </BpkText>
-            <BpkText tagName="p" className={getClassName("App__section-subtitle")}>
+            <BpkText
+              tagName="p"
+              className={getClassName("App__section-subtitle")}
+            >
               Best price guarantee
             </BpkText>
           </div>
-          
+
           <div className={getClassName("App__flight-grid")}>
             <BpkCard className={getClassName("App__flight-card")}>
               <div className={getClassName("App__flight-header")}>
-                <BpkText tagName="p" className={getClassName("App__airline")}>Garuda Indonesia</BpkText>
-                <AlignedTickIcon className={getClassName("App__verified-icon")} />
+                <BpkText tagName="p" className={getClassName("App__airline")}>
+                  Garuda Indonesia
+                </BpkText>
+                <AlignedTickIcon
+                  className={getClassName("App__verified-icon")}
+                />
               </div>
               <div className={getClassName("App__flight-time-container")}>
                 <div className={getClassName("App__flight-time-column")}>
-                  <BpkText tagName="h4" textStyle="xl" className={getClassName("App__flight-time")}>07:30</BpkText>
-                  <BpkText tagName="p" className={getClassName("App__flight-code")}>CGK</BpkText>
+                  <BpkText
+                    tagName="h4"
+                    textStyle="xl"
+                    className={getClassName("App__flight-time")}
+                  >
+                    07:30
+                  </BpkText>
+                  <BpkText
+                    tagName="p"
+                    className={getClassName("App__flight-code")}
+                  >
+                    CGK
+                  </BpkText>
                 </div>
                 <div className={getClassName("App__flight-duration")}>
                   <div className={getClassName("App__duration-line")}></div>
                   <BpkText tagName="p">2h 35m</BpkText>
                 </div>
                 <div className={getClassName("App__flight-time-column")}>
-                  <BpkText tagName="h4" textStyle="xl" className={getClassName("App__flight-time")}>10:05</BpkText>
-                  <BpkText tagName="p" className={getClassName("App__flight-code")}>DPS</BpkText>
+                  <BpkText
+                    tagName="h4"
+                    textStyle="xl"
+                    className={getClassName("App__flight-time")}
+                  >
+                    10:05
+                  </BpkText>
+                  <BpkText
+                    tagName="p"
+                    className={getClassName("App__flight-code")}
+                  >
+                    DPS
+                  </BpkText>
                 </div>
               </div>
               <div className={getClassName("App__flight-footer")}>
-                <BpkText tagName="p" className={getClassName("App__direct-label")}>Direct</BpkText>
-                <BpkText tagName="p" className={getClassName("App__flight-price")}>IDR 1,850,000</BpkText>
+                <BpkText
+                  tagName="p"
+                  className={getClassName("App__direct-label")}
+                >
+                  Direct
+                </BpkText>
+                <BpkText
+                  tagName="p"
+                  className={getClassName("App__flight-price")}
+                >
+                  IDR 1,850,000
+                </BpkText>
               </div>
-              <BpkButton className={getClassName("App__select-button")}>Select</BpkButton>
+              <BpkButton className={getClassName("App__select-button")}>
+                Select
+              </BpkButton>
             </BpkCard>
-            
+
             <BpkCard className={getClassName("App__flight-card")}>
               <div className={getClassName("App__flight-header")}>
-                <BpkText tagName="p" className={getClassName("App__airline")}>Lion Air</BpkText>
+                <BpkText tagName="p" className={getClassName("App__airline")}>
+                  Lion Air
+                </BpkText>
               </div>
               <div className={getClassName("App__flight-time-container")}>
                 <div className={getClassName("App__flight-time-column")}>
-                  <BpkText tagName="h4" textStyle="xl" className={getClassName("App__flight-time")}>13:15</BpkText>
-                  <BpkText tagName="p" className={getClassName("App__flight-code")}>CGK</BpkText>
+                  <BpkText
+                    tagName="h4"
+                    textStyle="xl"
+                    className={getClassName("App__flight-time")}
+                  >
+                    13:15
+                  </BpkText>
+                  <BpkText
+                    tagName="p"
+                    className={getClassName("App__flight-code")}
+                  >
+                    CGK
+                  </BpkText>
                 </div>
                 <div className={getClassName("App__flight-duration")}>
                   <div className={getClassName("App__duration-line")}></div>
                   <BpkText tagName="p">2h 30m</BpkText>
                 </div>
                 <div className={getClassName("App__flight-time-column")}>
-                  <BpkText tagName="h4" textStyle="xl" className={getClassName("App__flight-time")}>15:45</BpkText>
-                  <BpkText tagName="p" className={getClassName("App__flight-code")}>DPS</BpkText>
+                  <BpkText
+                    tagName="h4"
+                    textStyle="xl"
+                    className={getClassName("App__flight-time")}
+                  >
+                    15:45
+                  </BpkText>
+                  <BpkText
+                    tagName="p"
+                    className={getClassName("App__flight-code")}
+                  >
+                    DPS
+                  </BpkText>
                 </div>
               </div>
               <div className={getClassName("App__flight-footer")}>
-                <BpkText tagName="p" className={getClassName("App__direct-label")}>Direct</BpkText>
-                <BpkText tagName="p" className={getClassName("App__flight-price--highlighted")}>IDR 1,200,000</BpkText>
+                <BpkText
+                  tagName="p"
+                  className={getClassName("App__direct-label")}
+                >
+                  Direct
+                </BpkText>
+                <BpkText
+                  tagName="p"
+                  className={getClassName("App__flight-price--highlighted")}
+                >
+                  IDR 1,200,000
+                </BpkText>
               </div>
-              <BpkButton className={getClassName("App__select-button--highlighted")}>
+              <BpkButton
+                className={getClassName("App__select-button--highlighted")}
+              >
                 Select
               </BpkButton>
             </BpkCard>
           </div>
         </div>
-        
+
         <div className={getClassName("App__bottom-actions")}>
-          <BpkButton onClick={() => alert('It works!')} className={getClassName("App__continue-btn")}>
+          <BpkButton
+            onClick={() => alert("It works!")}
+            className={getClassName("App__continue-btn")}
+          >
             Continue
           </BpkButton>
         </div>
@@ -281,22 +393,47 @@ const App = () => {
         <div className={getClassName("App__footer-content")}>
           <div className={getClassName("App__footer-brand")}>
             <AlignedAirplaneIcon className={getClassName("App__footer-icon")} />
-            <BpkText tagName="p" className={getClassName("App__footer-brand-text")}>
+            <BpkText
+              tagName="p"
+              className={getClassName("App__footer-brand-text")}
+            >
               skyscanner
             </BpkText>
           </div>
           <div className={getClassName("App__footer-links")}>
             <div className={getClassName("App__footer-column")}>
-              <BpkText tagName="h4" className={getClassName("App__footer-title")}>Company</BpkText>
-              <a href="#" className={getClassName("App__footer-link")}>About us</a>
-              <a href="#" className={getClassName("App__footer-link")}>Careers</a>
-              <a href="#" className={getClassName("App__footer-link")}>Press</a>
+              <BpkText
+                tagName="h4"
+                className={getClassName("App__footer-title")}
+              >
+                Company
+              </BpkText>
+              <a href="#" className={getClassName("App__footer-link")}>
+                About us
+              </a>
+              <a href="#" className={getClassName("App__footer-link")}>
+                Careers
+              </a>
+              <a href="#" className={getClassName("App__footer-link")}>
+                Press
+              </a>
             </div>
             <div className={getClassName("App__footer-column")}>
-              <BpkText tagName="h4" className={getClassName("App__footer-title")}>Help</BpkText>
-              <a href="#" className={getClassName("App__footer-link")}>FAQ</a>
-              <a href="#" className={getClassName("App__footer-link")}>Contact</a>
-              <a href="#" className={getClassName("App__footer-link")}>Privacy</a>
+              <BpkText
+                tagName="h4"
+                className={getClassName("App__footer-title")}
+              >
+                Help
+              </BpkText>
+              <a href="#" className={getClassName("App__footer-link")}>
+                FAQ
+              </a>
+              <a href="#" className={getClassName("App__footer-link")}>
+                Contact
+              </a>
+              <a href="#" className={getClassName("App__footer-link")}>
+                Privacy
+              </a>
             </div>
           </div>
         </div>

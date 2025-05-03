@@ -71,15 +71,15 @@
   &__nav {
     background-color: transparent !important;
     margin-bottom: 0;
-    
+
     :global(.bpk-horizontal-nav__item) {
       color: rgba(255, 255, 255, 0.8);
-      
+
       &:hover {
         color: $bpk-color-white;
       }
     }
-    
+
     :global(.bpk-horizontal-nav__item--selected) {
       color: $bpk-color-white;
     }
@@ -189,7 +189,8 @@
     color: $bpk-color-sky-blue;
   }
 
-  &__location-card, &__date-card {
+  &__location-card,
+  &__date-card {
     padding: $bpk-spacing-md;
     border-radius: $bpk-border-radius-sm;
     cursor: pointer;
@@ -396,8 +397,9 @@
     background-color: $bpk-color-sky-gray-tint-04;
     position: relative;
 
-    &:before, &:after {
-      content: '';
+    &:before,
+    &:after {
+      content: "";
       position: absolute;
       width: 6px;
       height: 6px;
